@@ -1,0 +1,58 @@
+@import '../../../../styles/mixin';
+
+.card {
+    margin: 10px;
+    padding: 20px;
+    min-width: 260px;
+    max-width: 260px;
+    height: 210px;
+    border: 1px solid var(--grey-light);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    &__title {
+        text-align: center;
+        font-size: 18px;
+        flex-grow: 1;
+    }
+
+    &__data {
+        display: flex;
+        justify-content: center;
+
+        &--name {
+            width: 100px;
+            text-align: right;
+            margin-right: 10px;
+        }
+
+        &--info {
+            width: 100px;
+            text-transform: capitalize;
+        }
+    }
+
+    &__btn-container {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    &__btn {
+        @include button;
+        background-color: var(--color-dark);
+
+        &:hover {
+            cursor: pointer;
+            background-color: var(--color-light);
+        }
+
+        &:active {
+            cursor: pointer;
+            background-color: var(--color-light);
+        }
+    }
+}

@@ -1,0 +1,29 @@
+.navbar {
+    width: 100%;
+    background-color: var(--color-light); 
+    box-shadow: var(--shadow);
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__link {
+        margin-right: 50px;
+        text-transform: uppercase;
+        display: inline-block;
+        color: var(--white);
+        padding: 18px 0;
+
+        &:visited {
+            color: var(--white);
+        }
+    }
+}
+
+.fa-puzzle-piece {
+    margin-left: 40px;
+    font-size: 30px;
+    color: var(--white);
+    transform: rotate(30deg);
+}

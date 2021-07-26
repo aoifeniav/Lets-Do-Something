@@ -1,1 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+@import './styles/colors';
+@import './styles/fonts';
+@import './styles/variables';
+@import './styles/mixin';
+
+body {
+    margin: 0;
+    font-family: 'Nunito';
+    font-weight: bold;
+    font-size: 16px;
+    color: var(--grey-dark);
+    background-color: var(--white);
+}
+
+a {
+    text-decoration: none;
+}

@@ -1,0 +1,11 @@
+<app-header [headerContent]="exploreHeader"></app-header>
+
+<section class="gallery">
+    <div *ngFor="let activity of apiDataList" 
+    [@fadeInOnEnter]="{ value: '', params: { duration: 300, delay: 200 } }" 
+    [@fadeOutOnLeave]="{ value: '', params: { duration: 300 } }">
+        <app-card [activity]="activity" 
+        (discardClickEvent)="onDiscardClick($event)" 
+        (saveClickEvent)="onSaveClick($event)"></app-card>
+    </div>
+</section>

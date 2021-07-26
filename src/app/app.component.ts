@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { INav } from './core/models/icore';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'lets-do-something-app';
+  public navbar: INav[] = [
+    {
+      navText: 'Explore',
+      navUrl: '/explore',
+    },
+    {
+      navText: 'History',
+      navUrl: '/history',
+    },
+  ];
+
 }
