@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PagesService } from 'src/app/pages/services/pages.service';
-import { ApiService } from 'src/app/pages/explore/services/api.service';
+import { PagesService } from 'src/app/services/pages.service';
+import { ApiService } from 'src/app/services/api.service';
 import { ICard, IHeader } from 'src/app/shared/models/ishared';
 import { fadeInOnEnterAnimation, fadeOutOnLeaveAnimation } from 'angular-animations';
 
@@ -25,25 +25,30 @@ export class ExploreViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getActivityData();
+    this.getFullGallery();
   }
 
-  public getActivityData() {
+  private getFullGallery() {
     for (let index = 0; index < 6; index++) {
-      this.apiService.getApiData().subscribe((data: any) => {
-        this.apiDataList.push(this.transformData(data));
-      });
+      this.getActivityFromApi();
     }
   }
 
-  public transformData(data: ICard) {
+  private getActivityFromApi() {
+    this.apiService.getActivityFromApi().subscribe((data: any) => {
+      this.apiDataList.push(this.transformData(data));
+    });
+  }
+
+  private transformData(data: ICard) {
     return {
       activity: data.activity,
       type: data.type,
       participants: data.participants,
       accessibility: this.transformAccessibility(data.accessibility),
       price: this.transformPrice(data.price),
-      key: data.key
+      key: data.key,
+      list: '',
     }
   }
 
@@ -73,30 +78,23 @@ export class ExploreViewComponent implements OnInit {
     }
   }
 
-  public onDiscardClick(event: any) {
-    const activityIndexInList = this.apiDataList.findIndex((activity) => activity.key === event.target.id);
-    this.pagesService.discardedInService.push(this.apiDataList[activityIndexInList]);
+  private addList(keyFromButton: number, list: string) {
+    const activityIndexInList = this.apiDataList.findIndex((activity) => activity.key === keyFromButton);
+    this.apiDataList[activityIndexInList].list = list;
+
+    this.pagesService.clasified.push(this.apiDataList[activityIndexInList]);
+    console.log('Clasified from explore:', this.pagesService.clasified);
 
     this.apiDataList.splice(activityIndexInList, 1);
+    this.getActivityFromApi();
+  }
 
-    this.apiService.getApiData().subscribe((data: any) => {
-      this.apiDataList.push(this.transformData(data));
-    });
-
-    console.log('Discarded in service:', this.pagesService.discardedInService);
+  public onDiscardClick(event: any) {
+    this.addList(event.target.id, 'discarded');
   }
 
   public onSaveClick(event: any) {
-    const activityIndexInList = this.apiDataList.findIndex((activity) => activity.key === event.target.id);
-    this.pagesService.savedInService.push(this.apiDataList[activityIndexInList]);
-
-    this.apiDataList.splice(activityIndexInList, 1);
-
-    this.apiService.getApiData().subscribe((data: any) => {
-      this.apiDataList.push(this.transformData(data));
-    });
-
-    console.log('Saved in service:', this.pagesService.savedInService);
+    this.addList(event.target.id, 'saved');
   }
 
 }

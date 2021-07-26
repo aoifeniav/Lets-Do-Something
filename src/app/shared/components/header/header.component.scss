@@ -21,14 +21,22 @@ aside {
     &__tag {
         @include button;
         margin: 5px;
-        background-color: var(--color-light);
 
-        .fa-check-square {
+        .fa-check-square,
+        .fa-square {
             margin-right: 8px;
         }
 
         &:hover {
             cursor: pointer;
+        }
+
+        &--active {
+            background-color: var(--color-light);
+        }
+
+        &--inactive {
+            background-color: var(--color-dark);
         }
     }
 }

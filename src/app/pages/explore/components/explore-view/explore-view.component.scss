@@ -1,8 +1,5 @@
+@import '../../../../../styles/mixin';
+
 .gallery {
-    max-width: 1200px;
-    margin: 10px auto;
-    padding: 0 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    @include gallery;
 }

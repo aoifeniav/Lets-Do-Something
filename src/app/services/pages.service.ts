@@ -6,9 +6,8 @@ import { ICard } from 'src/app/shared/models/ishared';
 })
 export class PagesService {
 
-  public discardedInService: ICard[] = [];
+  public clasified: ICard[] = [];
 
-  public savedInService: ICard[] = [];
-
-  constructor() { }
+  constructor() {
+  }
 }

@@ -5,6 +5,7 @@ export interface ICard {
     accessibility: number | string;
     price: number | string;
     key: number;
+    list: string;
 }
 
 export interface IHeader {
