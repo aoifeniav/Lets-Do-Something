@@ -2,16 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { PagesService } from 'src/app/services/pages.service';
 import { ApiService } from 'src/app/services/api.service';
 import { ICard, IHeader } from 'src/app/shared/models/ishared';
-import { fadeInOnEnterAnimation, fadeOutOnLeaveAnimation } from 'angular-animations';
 
 @Component({
   selector: 'app-explore-view',
   templateUrl: './explore-view.component.html',
-  styleUrls: ['./explore-view.component.scss'],
-  animations: [
-    fadeInOnEnterAnimation(),
-    fadeOutOnLeaveAnimation()
-  ]
+  styleUrls: ['./explore-view.component.scss']
 })
 export class ExploreViewComponent implements OnInit {
   public exploreHeader: IHeader;
@@ -29,7 +24,7 @@ export class ExploreViewComponent implements OnInit {
   }
 
   private getFullGallery() {
-    for (let index = 0; index < 6; index++) {
+    for (let index = 0; index < 9; index++) {
       this.getActivityFromApi();
     }
   }
@@ -83,7 +78,7 @@ export class ExploreViewComponent implements OnInit {
     this.apiDataList[activityIndexInList].list = list;
 
     this.pagesService.clasified.push(this.apiDataList[activityIndexInList]);
-    console.log('Clasified from explore:', this.pagesService.clasified);
+    console.log('Clasified activities:', this.pagesService.clasified);
 
     this.apiDataList.splice(activityIndexInList, 1);
     this.getActivityFromApi();

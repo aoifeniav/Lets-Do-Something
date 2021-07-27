@@ -1,11 +1,10 @@
-<app-header [headerContent]="historyHeader"></app-header>
+<app-header [historyHeaderContent]="historyHeader" (tagClickEvent)="onHistoryTagClick($event)"></app-header>
 
 <section class="gallery">
-    <div *ngFor="let activity of pagesService.clasified | filterByList: visibleList" 
-    [@fadeInOnEnter]="{ value: '', params: { duration: 300, delay: 200 } }" 
-    [@fadeOutOnLeave]="{ value: '', params: { duration: 300 } }">
-        <app-card [activity]="activity"></app-card>
+    <div *ngFor="let activity of filteredList">
+        <app-card [activity]="activity">
         <!-- (discardClickEvent)="onDiscardClick($event)"
-        (saveClickEvent)="onSaveClick($event)"></app-card> -->
+        (saveClickEvent)="onSaveClick($event)"> -->
+        </app-card>
     </div>
 </section>
