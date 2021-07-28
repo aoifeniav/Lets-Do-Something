@@ -1,7 +1,6 @@
 @import "../../../../../styles/mixin";
 
 aside {
-    background-color: var(--white);
     display: flex;
     justify-content: center;
 
@@ -27,11 +26,11 @@ aside {
         }
 
         &--active {
-            background-color: var(--color-light);
+            background-color: var(--color-bright);
         }
 
         &--inactive {
-            background-color: var(--color-dark);
+            background-color: var(--grey-light);
         }
     }
 }

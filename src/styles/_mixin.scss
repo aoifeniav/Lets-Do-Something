@@ -1,6 +1,6 @@
 @mixin button {
+    color: var(--white);
     border-radius: var(--border-radius);
     padding: 5px 12px;
     box-shadow: var(--shadow);
-    color: var(--white);
 }

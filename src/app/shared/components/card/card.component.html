@@ -1,4 +1,13 @@
-<div class="card">
+<div class="card"
+[ngClass]="{'card--education' : activity?.type === 'education', 
+'card--recreational' : activity?.type === 'recreational', 
+'card--social' : activity?.type === 'social', 
+'card--diy' : activity?.type === 'diy', 
+'card--charity' : activity?.type === 'charity', 
+'card--cooking' : activity?.type === 'cooking', 
+'card--relaxation' : activity?.type === 'relaxation', 
+'card--music' : activity?.type === 'music', 
+'card--busywork' : activity?.type === 'busywork'}">
     <h2 class="card__title">{{activity?.activity}}<span></span></h2>
     <div class="card__data">
         <div class="card__data--name">
@@ -15,7 +24,7 @@
         </div>
     </div>
     <div class="card__btn-container">
-        <div class="card__btn" [id]="activity?.key" [ngClass]="{'d-none' : activity?.list === 'discarded'}" (click)="onDiscardClick($event)">Discard</div>
-        <div class="card__btn" [id]="activity?.key" [ngClass]="{'d-none' : activity?.list === 'saved'}" (click)="onSaveClick($event)">Save</div>
+        <div class="card__btn" [id]="activity?.key" [ngClass]="{'d-none' : activity?.list !== '' }" (click)="onDiscardClick($event)">Discard</div>
+        <div class="card__btn" [id]="activity?.key" [ngClass]="{'d-none' : activity?.list !== '' }" (click)="onSaveClick($event)">Save</div>
     </div>
 </div>

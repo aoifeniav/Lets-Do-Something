@@ -31,7 +31,11 @@ export class ExploreViewComponent implements OnInit {
 
   private getActivityFromApi() {
     this.apiService.getActivityFromApi().subscribe((data: any) => {
-      this.apiDataList.push(this.transformData(data));
+      if (this.apiDataList.find((activity) => data.key === activity.key)) {
+        this.getActivityFromApi();
+      } else {
+        this.apiDataList.push(this.transformData(data));
+      }
     });
   }
 
