@@ -2,7 +2,7 @@
 
 <section class="gallery">
     <span *ngIf="pagesService.clasified.length === 0">{{noActivitiesText}}</span>
-    <div *ngFor="let activity of filteredList">
+    <div *ngFor="let activity of filteredList" [@enter] [@leave]>
         <app-card [activity]="activity" (discardClickEvent)="onDiscardClick($event)"
             (saveClickEvent)="onSaveClick($event)">
         </app-card>

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { PagesService } from 'src/app/services/pages.service';
 import { IHeader } from '../../../../shared/models/ishared';
 
 @Component({
@@ -11,7 +12,7 @@ export class HistoryHeaderComponent implements OnInit {
 
   @Output() public tagClickEvent = new EventEmitter();
 
-  constructor() { }
+  constructor(public pagesService: PagesService) { }
 
   ngOnInit(): void {
   }

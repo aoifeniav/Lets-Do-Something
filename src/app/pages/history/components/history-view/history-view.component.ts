@@ -1,11 +1,17 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { fadeInOnEnterAnimation, fadeOutOnLeaveAnimation } from 'angular-animations';
+
 import { PagesService } from 'src/app/services/pages.service';
 import { ICard, IHeader } from 'src/app/shared/models/ishared';
 
 @Component({
   selector: 'app-history-view',
   templateUrl: './history-view.component.html',
-  styleUrls: ['./history-view.component.scss']
+  styleUrls: ['./history-view.component.scss'],
+  animations: [
+    fadeInOnEnterAnimation({ anchor: 'enter', duration: 500 }),
+    fadeOutOnLeaveAnimation({ anchor: 'leave', duration: 500 })
+  ]
 })
 export class HistoryViewComponent implements OnInit {
   public historyHeader: IHeader;

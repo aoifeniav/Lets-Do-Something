@@ -1,5 +1,8 @@
 <aside>
     <div class="header-block">
-        <span class="header-block__tag header-block__tag--active" *ngFor="let tag of historyHeaderContent.headerTags" (click)="onTagClick($event, tag)">{{tag}}</span>
+        <span class="header-block__tag header-block__tag--active" 
+        *ngFor="let tag of historyHeaderContent.headerTags" 
+        [ngClass]="{'header-block__tag--inactive' : pagesService.clasified.length == 0}" 
+        (click)="pagesService.clasified.length == 0 ? null : onTagClick($event, tag)">{{tag}}</span>
     </div>
 </aside>

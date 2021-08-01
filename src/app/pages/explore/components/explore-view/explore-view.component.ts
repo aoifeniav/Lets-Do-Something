@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { fadeInOnEnterAnimation, fadeOutOnLeaveAnimation } from 'angular-animations';
+
 import { PagesService } from 'src/app/services/pages.service';
 import { ApiService } from 'src/app/services/api.service';
 import { ICard, IHeader } from 'src/app/shared/models/ishared';
@@ -6,7 +8,11 @@ import { ICard, IHeader } from 'src/app/shared/models/ishared';
 @Component({
   selector: 'app-explore-view',
   templateUrl: './explore-view.component.html',
-  styleUrls: ['./explore-view.component.scss']
+  styleUrls: ['./explore-view.component.scss'],
+  animations: [
+    fadeInOnEnterAnimation({ anchor: 'enter', duration: 500 }),
+    fadeOutOnLeaveAnimation({ anchor: 'leave', duration: 500 })
+  ]
 })
 export class ExploreViewComponent implements OnInit {
   public exploreHeader: IHeader;
@@ -34,7 +40,9 @@ export class ExploreViewComponent implements OnInit {
       if (this.apiDataList.find((activity) => data.key === activity.key)) {
         this.getActivityFromApi();
       } else {
-        this.apiDataList.push(this.transformData(data));
+        setTimeout(() => {
+          this.apiDataList.push(this.transformData(data));
+        }, 500);
       }
     });
   }
