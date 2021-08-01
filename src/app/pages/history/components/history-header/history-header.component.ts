@@ -9,6 +9,7 @@ import { IHeader } from '../../../../shared/models/ishared';
 })
 export class HistoryHeaderComponent implements OnInit {
   @Input() public historyHeaderContent!: IHeader;
+  @Input() public visibleTags!: string[];
 
   @Output() public tagClickEvent = new EventEmitter();
 

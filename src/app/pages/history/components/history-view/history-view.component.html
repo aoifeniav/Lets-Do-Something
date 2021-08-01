@@ -1,4 +1,4 @@
-<app-header [historyHeaderContent]="historyHeader" (tagClickEvent)="onHistoryTagClick($event)"></app-header>
+<app-header [historyHeaderContent]="historyHeader" [visibleTags]="visibleListFilter" (tagClickEvent)="onHistoryTagClick($event)"></app-header>
 
 <section class="gallery">
     <span *ngIf="pagesService.clasified.length === 0">{{noActivitiesText}}</span>

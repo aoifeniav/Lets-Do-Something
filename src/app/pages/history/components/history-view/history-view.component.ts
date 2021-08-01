@@ -17,7 +17,7 @@ export class HistoryViewComponent implements OnInit {
   public historyHeader: IHeader;
 
   public visibleListFilter: string[];
-  public filteredList: ICard[];
+  public filteredList!: ICard[];
   public noActivitiesText: string = 'You have not clasified any activity yet.'
 
   constructor(public pagesService: PagesService) {
@@ -25,8 +25,8 @@ export class HistoryViewComponent implements OnInit {
       headerTags: ['saved', 'discarded']
     }
 
-    this.visibleListFilter = ['saved', 'discarded'];
-    this.filteredList = [...this.pagesService.clasified];
+    this.visibleListFilter = ['saved'];
+    this.refreshFilteredList();
   }
 
   ngOnInit(): void {
