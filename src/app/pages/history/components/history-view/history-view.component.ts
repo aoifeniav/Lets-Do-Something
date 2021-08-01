@@ -12,6 +12,7 @@ export class HistoryViewComponent implements OnInit {
 
   public visibleListFilter: string[];
   public filteredList: ICard[];
+  public noActivitiesText: string = 'You have not clasified any activity yet.'
 
   constructor(public pagesService: PagesService) {
     this.historyHeader = {

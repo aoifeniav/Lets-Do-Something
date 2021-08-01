@@ -82,7 +82,6 @@ export class ExploreViewComponent implements OnInit {
     this.apiDataList[activityIndexInList].list = list;
 
     this.pagesService.clasified.push(this.apiDataList[activityIndexInList]);
-    console.log('Clasified activities:', this.pagesService.clasified);
 
     this.apiDataList.splice(activityIndexInList, 1);
     this.getActivityFromApi();

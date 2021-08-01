@@ -1,10 +1,10 @@
 <app-header [historyHeaderContent]="historyHeader" (tagClickEvent)="onHistoryTagClick($event)"></app-header>
 
 <section class="gallery">
+    <span *ngIf="pagesService.clasified.length === 0">{{noActivitiesText}}</span>
     <div *ngFor="let activity of filteredList">
-        <app-card [activity]="activity"
-        (discardClickEvent)="onDiscardClick($event)"
-        (saveClickEvent)="onSaveClick($event)">
+        <app-card [activity]="activity" (discardClickEvent)="onDiscardClick($event)"
+            (saveClickEvent)="onSaveClick($event)">
         </app-card>
     </div>
 </section>

@@ -1,19 +1,24 @@
 header {
     color: var(--white);
-}
-
-.navbar {
     width: 100%;
     background-color: var(--color-bright); 
     box-shadow: var(--shadow);
     position: fixed;
     top: 0;
+    text-align: center;
+}
+
+.navbar {
+    max-width: 992px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     &__link {
-        margin-right: 50px;
+        margin-left: 50px;
         text-transform: uppercase;
         display: inline-block;
         padding: 18px 0;
@@ -29,7 +34,7 @@ header {
 }
 
 .fa-puzzle-piece {
-    margin-left: 40px;
+    margin: 0 10px;
     font-size: 30px;
     transform: rotate(30deg);
 }
