@@ -10,7 +10,7 @@ import { ICard, IHeader } from 'src/app/shared/models/ishared';
 export class HistoryViewComponent implements OnInit {
   public historyHeader: IHeader;
 
-  public visibleList: string[];
+  public visibleListFilter: string[];
   public filteredList: ICard[];
 
   constructor(public pagesService: PagesService) {
@@ -18,7 +18,7 @@ export class HistoryViewComponent implements OnInit {
       headerTags: ['saved', 'discarded']
     }
 
-    this.visibleList = ['saved', 'discarded'];
+    this.visibleListFilter = ['saved', 'discarded'];
     this.filteredList = [...this.pagesService.clasified];
   }
 
@@ -26,15 +26,30 @@ export class HistoryViewComponent implements OnInit {
   }
 
   public onHistoryTagClick(tag: string) {
-    if (this.visibleList.includes(tag)) {
-      const tagIndex = this.visibleList.indexOf(tag);
-      this.visibleList.splice(tagIndex, 1);
+    if (this.visibleListFilter.includes(tag)) {
+      const tagIndex = this.visibleListFilter.indexOf(tag);
+      this.visibleListFilter.splice(tagIndex, 1);
       this.filteredList = this.filteredList.filter( (activity: ICard) => activity.list !== tag);
     } else {
-      this.visibleList.push(tag);
+      this.visibleListFilter.push(tag);
       const addActivities = this.pagesService.clasified.filter( (activity: ICard) => activity.list === tag);
       this.filteredList = [...this.filteredList, ...addActivities];
     }
   }
 
+  public refreshFilteredList() {
+    this.filteredList = this.pagesService.clasified.filter( (activity: ICard) => this.visibleListFilter.includes(activity.list) );
+  }
+
+  public onDiscardClick(event: any) {
+    const activity = this.filteredList.find((activity: ICard) => activity.key === event.target.id);
+    activity!.list = 'discarded';
+    this.refreshFilteredList();
+  }
+
+  public onSaveClick(event: any) {
+    const activity = this.filteredList.find((activity: ICard) => activity.key === event.target.id);
+    activity!.list = 'saved';  
+    this.refreshFilteredList();
+  }
 }

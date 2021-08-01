@@ -24,7 +24,7 @@
         </div>
     </div>
     <div class="card__btn-container">
-        <div class="card__btn" [id]="activity?.key" [ngClass]="{'d-none' : activity?.list !== '' }" (click)="onDiscardClick($event)">Discard</div>
-        <div class="card__btn" [id]="activity?.key" [ngClass]="{'d-none' : activity?.list !== '' }" (click)="onSaveClick($event)">Save</div>
+        <div class="card__btn" [id]="activity?.key" [ngClass]="{'d-none' : activity?.list == 'discarded' }" (click)="onDiscardClick($event)">Discard</div>
+        <div class="card__btn" [id]="activity?.key" [ngClass]="{'d-none' : activity?.list == 'saved' }" (click)="onSaveClick($event)">Save</div>
     </div>
 </div>

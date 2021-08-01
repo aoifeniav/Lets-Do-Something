@@ -2,9 +2,9 @@
 
 <section class="gallery">
     <div *ngFor="let activity of filteredList">
-        <app-card [activity]="activity">
-        <!-- (discardClickEvent)="onDiscardClick($event)"
-        (saveClickEvent)="onSaveClick($event)"> -->
+        <app-card [activity]="activity"
+        (discardClickEvent)="onDiscardClick($event)"
+        (saveClickEvent)="onSaveClick($event)">
         </app-card>
     </div>
 </section>
