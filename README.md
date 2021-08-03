@@ -1,4 +1,4 @@
-# LetsDoSomething
+# Let's Do Something
 
 Hi! This is my first project working with Angular.
 

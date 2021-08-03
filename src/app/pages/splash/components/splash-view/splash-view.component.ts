@@ -22,17 +22,14 @@ export class SplashViewComponent implements OnInit {
       {
         src: '../../../../../assets/images/kite.svg',
         alt: 'Kite',
-        index: 0
       },
       {
         src: '../../../../../assets/images/craft.svg',
         alt: 'Craft',
-        index: 1
       },
       {
         src: '../../../../../assets/images/bbq.svg',
         alt: 'Barbacue',
-        index: 2
       },
     ]
   }
