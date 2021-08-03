@@ -43,10 +43,8 @@
 
     &__btn {
         @include button;
-        background-color: var(--color-bright);
 
         &:hover {
-            cursor: pointer;
             background-color: var(--color-dark);
         }
     }

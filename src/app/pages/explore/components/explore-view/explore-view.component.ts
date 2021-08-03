@@ -37,7 +37,8 @@ export class ExploreViewComponent implements OnInit {
 
   private getActivityFromApi() {
     this.apiService.getActivityFromApi().subscribe((data: any) => {
-      if (this.apiDataList.find((activity) => data.key === activity.key)) {
+      if (this.apiDataList.find((activity) => data.key === activity.key)
+      || this.pagesService.clasified.find((activity) => data.key === activity.key)) {
         this.getActivityFromApi();
       } else {
         setTimeout(() => {

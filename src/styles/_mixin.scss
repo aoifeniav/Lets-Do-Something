@@ -3,4 +3,9 @@
     border-radius: var(--border-radius);
     padding: 5px 12px;
     box-shadow: var(--shadow);
+    background-color: var(--color-bright);
+
+    &:hover {
+        cursor: pointer;
+    }
 }

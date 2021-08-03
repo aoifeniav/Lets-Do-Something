@@ -21,10 +21,6 @@ aside {
         @include button;
         margin: 5px;
 
-        &:hover {
-            cursor: pointer;
-        }
-
         &--active {
             background-color: var(--color-bright);
         }

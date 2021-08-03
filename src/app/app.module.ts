@@ -12,7 +12,7 @@ import { PagesService } from './services/pages.service';
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
