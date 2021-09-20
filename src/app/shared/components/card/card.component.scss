@@ -7,7 +7,7 @@
     max-width: 260px;
     height: 210px;
     border: 1px solid var(--grey-light);
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-card);
     box-shadow: var(--shadow);
     display: flex;
     flex-direction: column;
@@ -15,7 +15,7 @@
 
     &__title {
         text-align: center;
-        font-size: 18px;
+        font-size: 16px;
         flex-grow: 1;
     }
 
@@ -44,9 +44,6 @@
     &__btn {
         @include button;
 
-        &:hover {
-            background-color: var(--color-dark);
-        }
     }
 
     &--education {

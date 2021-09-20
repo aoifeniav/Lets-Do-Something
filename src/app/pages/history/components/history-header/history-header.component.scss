@@ -27,6 +27,10 @@ aside {
 
         &--inactive {
             background-color: var(--grey-light);
+
+            &:hover {
+                background-color: var(--grey-light);
+            }
         }
     }
 }

@@ -2,12 +2,13 @@
 @import './styles/fonts';
 @import './styles/variables';
 @import './styles/mixin';
+@import './styles/keyframes';
 
 body {
     margin: 0;
-    font-family: 'Nunito';
-    font-weight: bold;
-    font-size: 16px;
+    font-family: 'Poppins';
+    font-weight: normal;
+    font-size: 14px;
     color: var(--grey-dark);
     background-color: var(--white);
 }

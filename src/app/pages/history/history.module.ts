@@ -5,14 +5,11 @@ import { HistoryRoutingModule } from './history-routing.module';
 import { HistoryHeaderComponent } from './components/history-header/history-header.component';
 import { HistoryViewComponent } from './components/history-view/history-view.component';
 import { CardModule } from 'src/app/shared/components/card/card.module';
-import { FilterByListPipe } from 'src/app/pipes/filter-by-list.pipe';
-
 
 @NgModule({
   declarations: [
     HistoryHeaderComponent,
     HistoryViewComponent,
-    FilterByListPipe
   ],
   imports: [
     CommonModule,

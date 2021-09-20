@@ -7,7 +7,7 @@ import { fadeInOnEnterAnimation } from 'angular-animations';
   templateUrl: './splash-view.component.html',
   styleUrls: ['./splash-view.component.scss'],
   animations: [
-    fadeInOnEnterAnimation({ anchor: 'enter', duration: 2000}),
+    fadeInOnEnterAnimation({ anchor: 'enter', duration: 3000}),
   ]
 })
 export class SplashViewComponent implements OnInit {
@@ -16,7 +16,7 @@ export class SplashViewComponent implements OnInit {
   public welcomeIcons: IImg[];
 
   constructor() {
-    this.welcomeMessage = ["Let's Do Something helps you find something new to do.", "Receive a ton of activities ideas and save them to your list to track them.", "If you don't like an activity, simply discard it!"];
+    this.welcomeMessage = ["Let's Do Something helps you find something new to do.", "Receive a ton of activity ideas and save them to your list to track them.", "If you don't like an activity, simply discard it!"];
     this.startButton = 'Get started';
     this.welcomeIcons = [
       {
