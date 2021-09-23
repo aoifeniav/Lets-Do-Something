@@ -18,7 +18,7 @@ export class HistoryViewComponent implements OnInit {
 
   public visibleListFilter: string[];
   public filteredList!: ICard[];
-  public noActivitiesText: string = 'You have not clasified any activity yet.'
+  public noActivitiesText: string = 'You have not classified any activity yet.'
 
   constructor(public pagesService: PagesService) {
     this.historyHeader = {
@@ -39,13 +39,14 @@ export class HistoryViewComponent implements OnInit {
       this.filteredList = this.filteredList.filter( (activity: ICard) => activity.list !== tag);
     } else {
       this.visibleListFilter.push(tag);
-      const addActivities = this.pagesService.clasified.filter( (activity: ICard) => activity.list === tag);
+      const addActivities = this.pagesService.classified.filter( (activity: ICard) => activity.list === tag);
       this.filteredList = [...this.filteredList, ...addActivities];
     }
   }
 
   public refreshFilteredList() {
-    this.filteredList = this.pagesService.clasified.filter( (activity: ICard) => this.visibleListFilter.includes(activity.list) );
+    this.filteredList = this.pagesService.classified.filter( (activity: ICard) => this.visibleListFilter.includes(activity.list) );
+    localStorage.setItem('LetsDoSomething', JSON.stringify(this.pagesService.classified));
   }
 
   public onDiscardClick(event: any) {

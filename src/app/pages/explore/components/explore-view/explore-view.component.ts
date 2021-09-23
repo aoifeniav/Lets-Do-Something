@@ -38,7 +38,7 @@ export class ExploreViewComponent implements OnInit {
   private getActivityFromApi() {
     this.apiService.getActivityFromApi().subscribe((data: any) => {
       if (this.apiDataList.find((activity) => data.key === activity.key)
-      || this.pagesService.clasified.find((activity) => data.key === activity.key)) {
+      || this.pagesService.classified.find((activity) => data.key === activity.key)) {
         this.getActivityFromApi();
       } else {
         setTimeout(() => {
@@ -90,7 +90,8 @@ export class ExploreViewComponent implements OnInit {
     const activityIndexInList = this.apiDataList.findIndex((activity) => activity.key === keyFromButton);
     this.apiDataList[activityIndexInList].list = list;
 
-    this.pagesService.clasified.push(this.apiDataList[activityIndexInList]);
+    this.pagesService.classified.push(this.apiDataList[activityIndexInList]);
+    localStorage.setItem('LetsDoSomething', JSON.stringify(this.pagesService.classified));
 
     this.apiDataList.splice(activityIndexInList, 1);
     this.getActivityFromApi();

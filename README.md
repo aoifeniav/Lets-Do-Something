@@ -8,7 +8,7 @@ On the Explore view, you get a list of nine random activities that you can eithe
 
 On the History view, you can see your saved list, your discarded list or both.
 
-You can also save or discard activities that you already clasified into one or another list.
+You can also save or discard activities that you already classified into one or another list.
 
 ## Resources
 
