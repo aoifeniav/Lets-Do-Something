@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://www.boredapi.com/api/activity'
+  baseUrl: 'https://www.boredapi.com/api/activity'
 };
 
 /*
