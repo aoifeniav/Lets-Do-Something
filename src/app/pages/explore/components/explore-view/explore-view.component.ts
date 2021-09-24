@@ -3,7 +3,7 @@ import { fadeInOnEnterAnimation, fadeOutOnLeaveAnimation } from 'angular-animati
 
 import { PagesService } from 'src/app/services/pages.service';
 import { ApiService } from 'src/app/services/api.service';
-import { ICard, IHeader } from 'src/app/shared/models/ishared';
+import { ICard } from 'src/app/shared/models/ishared';
 
 @Component({
   selector: 'app-explore-view',
@@ -15,14 +15,9 @@ import { ICard, IHeader } from 'src/app/shared/models/ishared';
   ]
 })
 export class ExploreViewComponent implements OnInit {
-  public exploreHeader: IHeader;
-
   public apiDataList: ICard[] = [];
 
   constructor(public pagesService: PagesService, private readonly apiService: ApiService) {
-    this.exploreHeader = {
-      headerTags: ['busywork', 'charity', 'cooking', 'diy', 'education', 'music', 'recreational', 'relaxation', 'social']
-    }
   }
 
   ngOnInit(): void {
