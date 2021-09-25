@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { fadeInOnEnterAnimation, fadeOutOnLeaveAnimation } from 'angular-animations';
+import { Observable, forkJoin } from 'rxjs';
 
 import { PagesService } from 'src/app/services/pages.service';
 import { ApiService } from 'src/app/services/api.service';
@@ -24,25 +25,42 @@ export class ExploreViewComponent implements OnInit {
     this.getFullGallery();
   }
 
+  /**
+   * Calls to API 9 times in a row to get the full gallery. Each call result is processed through forkJoin.
+   */
   private getFullGallery() {
-    for (let index = 0; index < 9; index++) {
-      this.getActivityFromApi();
-    }
-  }
+    const callsToApi: Observable<any>[] = [];
 
-  private getActivityFromApi() {
-    this.apiService.getActivityFromApi().subscribe((data: any) => {
-      if (this.apiDataList.find((activity) => data.key === activity.key)
-      || this.pagesService.classified.find((activity) => data.key === activity.key)) {
-        this.getActivityFromApi();
-      } else {
-        setTimeout(() => {
-          this.apiDataList.push(this.transformData(data));
-        }, 500);
-      }
+    for (let index = 0; index < 9; index++) {
+      callsToApi.push(this.apiService.getActivityFromApi());
+    }
+
+    forkJoin(callsToApi).subscribe((callResults: any[]) => {
+      callResults.forEach((data: any) => this.processCallResult(data));
     });
   }
 
+  private getActivityFromApi() {
+    this.apiService.getActivityFromApi().subscribe((data: any) => this.processCallResult(data));
+  }
+
+  /**
+   * Checks if the activity has already been called. If it has, it repeats the call. If it has not, the activity is pushed to apiDataList.
+   */
+  private processCallResult(data: any) {
+    if (this.apiDataList.find((activity) => data.key === activity.key)
+      || this.pagesService.classified.find((activity) => data.key === activity.key)) {
+      this.getActivityFromApi();
+    } else {
+      setTimeout(() => {
+        this.apiDataList.push(this.transformData(data));
+      }, 500);
+    }
+  }
+
+  /**
+   * Processes the raw activity data from API to fit the activity card.
+   */
   private transformData(data: ICard) {
     return {
       activity: data.activity,

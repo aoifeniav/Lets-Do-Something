@@ -8,7 +8,10 @@ import { environment } from '../../environments/environment';
 export class ApiService {
   constructor(private readonly httpClient: HttpClient) { }
 
+  /**
+   * Calls to the API. Base URL has a random parameter to avoid cache.
+   */
   public getActivityFromApi() {
-    return this.httpClient.get(environment.baseUrl);
+    return this.httpClient.get(environment.baseUrl + '?' + new Date().getTime() * Math.random());
   }
 }
