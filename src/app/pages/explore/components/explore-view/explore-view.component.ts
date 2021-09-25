@@ -40,17 +40,20 @@ export class ExploreViewComponent implements OnInit {
     });
   }
 
-  private getActivityFromApi() {
+  /**
+   * Calls to API once to get one single activity.
+   */
+  private getSingleActivity() {
     this.apiService.getActivityFromApi().subscribe((data: any) => this.processCallResult(data));
   }
 
   /**
-   * Checks if the activity has already been called. If it has, it repeats the call. If it has not, the activity is pushed to apiDataList.
+   * Checks if the activity has already been called. If it has, it repeats the call to get a new one. If it has not, the activity is pushed into apiDataList.
    */
   private processCallResult(data: any) {
     if (this.apiDataList.find((activity) => data.key === activity.key)
       || this.pagesService.classified.find((activity) => data.key === activity.key)) {
-      this.getActivityFromApi();
+      this.getSingleActivity();
     } else {
       setTimeout(() => {
         this.apiDataList.push(this.transformData(data));
@@ -107,7 +110,7 @@ export class ExploreViewComponent implements OnInit {
     localStorage.setItem('LetsDoSomething', JSON.stringify(this.pagesService.classified));
 
     this.apiDataList.splice(activityIndexInList, 1);
-    this.getActivityFromApi();
+    this.getSingleActivity();
   }
 
   public onDiscardClick(event: any) {
